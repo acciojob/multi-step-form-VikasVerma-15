@@ -1,17 +1,11 @@
 import React, { useState } from "react";
 
-const Step = ({
-  step,
-  formData,
-  handleChange,
-  nextStep,
-  prevStep,
-  handleSubmit
-}) => {
+const Step = ({ step, formData, handleChange, nextStep, prevStep, handleSubmit }) => {
   const [errors, setErrors] = useState({});
 
+  // Validate Step 3 fields
   const validateStep3 = () => {
-    let tempErrors = {};
+    const tempErrors = {};
     const cardRegex = /^\d{12}$/; // exactly 12 digits
     const expiryRegex = /^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])$/; // DD/MM
 
@@ -24,11 +18,10 @@ const Step = ({
     }
 
     setErrors(tempErrors);
-
-    // Return true if no errors
-    return Object.keys(tempErrors).length === 0;
+    return Object.keys(tempErrors).length === 0; // true if no errors
   };
 
+  // Handle submit on Step 3
   const handleFinalSubmit = (e) => {
     e.preventDefault();
     if (validateStep3()) {
@@ -37,11 +30,11 @@ const Step = ({
   };
 
   return (
-    <form onSubmit={step === 3 ? handleFinalSubmit : handleSubmit}>
-
+    <form onSubmit={step === 3 ? handleFinalSubmit : (e) => e.preventDefault()}>
+      
       {/* STEP 1 */}
       {step === 1 && (
-        <div>
+        <div id="step1">
           <h3>Customer Details</h3>
 
           <label htmlFor="first_name">First Name</label>
@@ -64,7 +57,7 @@ const Step = ({
 
       {/* STEP 2 */}
       {step === 2 && (
-        <div>
+        <div id="step2">
           <h3>Car Details</h3>
 
           <label htmlFor="model">Brand</label>
@@ -88,7 +81,7 @@ const Step = ({
 
       {/* STEP 3 */}
       {step === 3 && (
-        <div>
+        <div id="step3">
           <h3>Payment Details</h3>
 
           <label htmlFor="card_info">Credit Card Number</label>
@@ -96,6 +89,7 @@ const Step = ({
             id="card_info"
             value={formData.card_info}
             onChange={handleChange}
+            placeholder="Enter 12-digit number"
           />
           {errors.card_info && (
             <div style={{ color: "red" }}>{errors.card_info}</div>
@@ -104,9 +98,9 @@ const Step = ({
           <label htmlFor="expiry_date">Expiration Date</label>
           <input
             id="expiry_date"
-            placeholder="DD/MM"
             value={formData.expiry_date}
             onChange={handleChange}
+            placeholder="DD/MM"
           />
           {errors.expiry_date && (
             <div style={{ color: "red" }}>{errors.expiry_date}</div>
@@ -122,3 +116,4 @@ const Step = ({
 };
 
 export default Step;
+
