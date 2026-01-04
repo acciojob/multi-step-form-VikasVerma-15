@@ -34,13 +34,13 @@ const App = () => {
       {/* Do not remove the main div */}
 
       <Step
-        step={step}
-        formData={formData}
-        handleChange={handleChange}
-        nextStep={nextStep}
-        prevStep={prevStep}
-        handleSubmit={handleSubmit}
-      />
+  step={step}
+  formData={formData}
+  handleChange={handleChange}
+  nextStep={() => setStep(step + 1)}
+  prevStep={() => setStep(step - 1)}
+  handleSubmit={handleSubmit}
+/>
 
     </div>
   );
