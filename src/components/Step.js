@@ -33,67 +33,79 @@ const Step = ({ step, formData, handleChange, nextStep, prevStep, handleSubmit }
     <form onSubmit={step === 3 ? handleFinalSubmit : (e) => e.preventDefault()}>
       
       {/* STEP 1 */}
-      {step === 1 && (
-        <div id="step1">
-          <h3>Customer Details</h3>
+{step === 1 && (
+  <div id="step1">
+    <h3>Customer Details</h3>
 
-          <label htmlFor="first_name">First Name</label>
-          <input
-            id="first_name"
-            value={formData.first_name}
-            onChange={handleChange}
-          />
+    <label htmlFor="first_name">First Name</label>
+    <input
+      id="first_name"
+      value={formData.first_name}
+      onChange={handleChange}
+    />
 
-          <label htmlFor="last_name">Last Name</label>
-          <input
-            id="last_name"
-            value={formData.last_name}
-            onChange={handleChange}
-          />
+    <label htmlFor="last_name">Last Name</label>
+    <input
+      id="last_name"
+      value={formData.last_name}
+      onChange={handleChange}
+    />
 
-          <button type="button" onClick={nextStep}>Next</button>
-        </div>
-      )}
+    <button type="button" onClick={nextStep}>Next</button>
+  </div>
+)}
 
-      {/* STEP 2 */}
-      {step === 2 && (
-        <div id="step2">
-          <h3>Car Details</h3>
+{/* STEP 2 */}
+{step === 2 && (
+  <div id="step2">
+    <h3>Car Details</h3>
 
-          <label htmlFor="model">Brand</label>
-          <input
-            id="model"
-            value={formData.model}
-            onChange={handleChange}
-          />
+    <label htmlFor="model">Brand</label>
+    <input
+      id="model"
+      value={formData.model}
+      onChange={handleChange}
+    />
 
-          <label htmlFor="car_price">Price</label>
-          <input
-            id="car_price"
-            value={formData.car_price}
-            onChange={handleChange}
-          />
+    <label htmlFor="car_price">Price</label>
+    <input
+      id="car_price"
+      value={formData.car_price}
+      onChange={handleChange}
+    />
 
-          <button type="button" onClick={prevStep}>Previous</button>
-          <button type="button" onClick={nextStep}>Next</button>
-        </div>
-      )}
+    <button type="button" onClick={prevStep}>Previous</button>
+    <button type="button" onClick={nextStep}>Next</button>
+  </div>
+)}
 
-      {/* STEP 3 */}
-      {step === 3 && (
-        <div id="step3">
-          <h3>Payment Details</h3>
+{/* STEP 3 */}
+{step === 3 && (
+  <div id="step3">
+    <h3>Payment Details</h3>
 
-          <label htmlFor="card_info">Credit Card Number</label>
-          <input
-            id="card_info"
-            value={formData.card_info}
-            onChange={handleChange}
-            placeholder="Enter 12-digit number"
-          />
-          {errors.card_info && (
-            <div style={{ color: "red" }}>{errors.card_info}</div>
-          )}
+    <label htmlFor="card_info">Credit Card Number</label>
+    <input
+      id="card_info"
+      value={formData.card_info}
+      onChange={handleChange}
+    />
+    {errors.card_info && <div style={{ color: "red" }}>{errors.card_info}</div>}
+
+    <label htmlFor="expiry_date">Expiration Date</label>
+    <input
+      id="expiry_date"
+      placeholder="DD/MM"
+      value={formData.expiry_date}
+      onChange={handleChange}
+    />
+    {errors.expiry_date && <div style={{ color: "red" }}>{errors.expiry_date}</div>}
+
+    <button type="button" onClick={prevStep}>Previous</button>
+    <button type="submit">Submit</button>
+  </div>
+)}
+
 
           <label htmlFor="expiry_date">Expiration Date</label>
           <input
