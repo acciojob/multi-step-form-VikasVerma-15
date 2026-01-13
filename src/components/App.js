@@ -4,7 +4,6 @@ import './../styles/App.css';
 
 const App = () => {
   const [step, setStep] = useState(1);
-
   const [formData, setFormData] = useState({
     first_name: "",
     last_name: "",
@@ -15,17 +14,15 @@ const App = () => {
   });
 
   const handleChange = (e) => {
-    setFormData({...formData, [e.target.id]: e.target.value});
+    setFormData({ ...formData, [e.target.id]: e.target.value });
   };
 
-  // Functional updates to avoid stale state
   const nextStep = () => setStep(prev => prev + 1);
   const prevStep = () => setStep(prev => prev - 1);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData);
-    alert("Form submitted successfully!");
+    console.log("Form submitted:", formData);
   };
 
   return (
