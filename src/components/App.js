@@ -4,7 +4,6 @@ import './../styles/App.css';
 
 const App = () => {
   const [step, setStep] = useState(1);
-
   const [formData, setFormData] = useState({
     first_name: "",
     last_name: "",
@@ -15,14 +14,12 @@ const App = () => {
   });
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.id]: e.target.value
-    });
+    setFormData({...formData, [e.target.id]: e.target.value});
   };
 
+  // Functional updates
   const nextStep = () => setStep(prev => prev + 1);
-const prevStep = () => setStep(prev => prev - 1);
+  const prevStep = () => setStep(prev => prev - 1);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -31,19 +28,15 @@ const prevStep = () => setStep(prev => prev - 1);
 
   return (
     <div>
-      {/* Do not remove the main div */}
-
       <Step
-  step={step}
-  formData={formData}
-  handleChange={handleChange}
-  nextStep={nextStep}
-  prevStep={prevStep}
-  handleSubmit={handleSubmit}
-/>
-
+        step={step}
+        formData={formData}
+        handleChange={handleChange}
+        nextStep={nextStep}
+        prevStep={prevStep}
+        handleSubmit={handleSubmit}
+      />
     </div>
   );
 };
-
 export default App;
