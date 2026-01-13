@@ -21,8 +21,8 @@ const App = () => {
     });
   };
 
-  const nextStep = () => setStep(step + 1);
-  const prevStep = () => setStep(step - 1);
+  const nextStep = () => setStep(prev => prev + 1);
+const prevStep = () => setStep(prev => prev - 1);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -37,8 +37,8 @@ const App = () => {
   step={step}
   formData={formData}
   handleChange={handleChange}
-  nextStep={() => setStep(step + 1)}
-  prevStep={() => setStep(step - 1)}
+  nextStep={nextStep}
+  prevStep={prevStep}
   handleSubmit={handleSubmit}
 />
 
